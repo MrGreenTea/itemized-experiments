@@ -1,13 +1,14 @@
 <script lang="ts">
+  import type { Item } from "$lib/types";
   export let component;
-  export let items: any[];
+  export let items: Item[];
   export let mapping;
 </script>
 
-<li class="divide-y divide-gray-100">
+<ul class="divide-y divide-gray-100">
   {#each items as item}
-    <ol>
+    <li>
       <svelte:component this={component} {item} {mapping} />
-    </ol>
+    </li>
   {/each}
-</li>
+</ul>

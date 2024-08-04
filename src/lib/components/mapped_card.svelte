@@ -1,5 +1,7 @@
 <script lang="ts">
-  export let item: any;
+  import type { Item } from "$lib/types";
+
+  export let item: Item;
   export let mapping: {
     title: keyof typeof item;
     description: keyof typeof item;
@@ -12,8 +14,10 @@
   <div class="flex min-w-0 gap-x-4">
     <img
       class="h-12 w-12 flex-none rounded-full bg-gray-50"
-      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-      alt=""
+      src="https://i.pravatar.cc/256?u={item.id}"
+      alt="Portrait"
+      loading="lazy"
+      decoding="async"
     />
     <div class="min-w-0 flex-auto">
       <p class="text-sm font-semibold leading-6 text-gray-900">

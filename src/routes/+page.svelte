@@ -1,10 +1,17 @@
 <script lang="ts">
   import ListOfComponent from "$lib/components/list_of_component.svelte";
   import MappedCard from "$lib/components/mapped_card.svelte";
+  import MappingEditor from "$lib/components/mapping_editor.svelte";
 
-  const fields = ["id", "name", "age", "description"] as const;
+  const input_fields = ["id", "name", "age", "description"] as const;
+  const output_fields = [
+    "title",
+    "description",
+    "subtitle",
+    "contact",
+  ] as const;
 
-  const items: { [key in (typeof fields)[number]]: any }[] = [
+  const items: { [key in (typeof input_fields)[number]]: any }[] = [
     {
       id: 1,
       name: "Jonas",
@@ -34,43 +41,6 @@
 </script>
 
 <div class="mx-auto max-w-4xl">
-  <div>
-    <div>
-      <label for="title">Title</label>
-      <select id="title" bind:value={mapping.title}>
-        {#each fields as field}
-          <option>{field}</option>
-        {/each}
-      </select>
-    </div>
-
-    <div>
-      <label for="description">Description</label>
-      <select id="description" bind:value={mapping.description}>
-        {#each fields as field}
-          <option>{field}</option>
-        {/each}
-      </select>
-    </div>
-
-    <div>
-      <label for="subtitle">Subtitle</label>
-      <select id="subtitle" bind:value={mapping.subtitle}>
-        {#each fields as field}
-          <option>{field}</option>
-        {/each}
-      </select>
-    </div>
-
-    <div>
-      <label for="contact">Contact</label>
-      <select id="contact" bind:value={mapping.contact}>
-        {#each fields as field}
-          <option>{field}</option>
-        {/each}
-      </select>
-    </div>
-  </div>
-
+  <MappingEditor bind:mapping {input_fields} {output_fields} />
   <ListOfComponent component={MappedCard} {items} {mapping} />
 </div>
