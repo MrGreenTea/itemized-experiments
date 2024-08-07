@@ -1,15 +1,10 @@
 <script lang="ts">
   import ListOfComponent from "$lib/components/list_of_component.svelte";
-  import MappedCard from "$lib/components/mapped_card.svelte";
+  import MappedCard, { schema } from "$lib/components/mapped_card.svelte";
   import MappingEditor from "$lib/components/mapping_editor.svelte";
 
   const input_fields = ["id", "name", "age", "description"] as const;
-  const output_fields = [
-    "title",
-    "description",
-    "subtitle",
-    "contact",
-  ] as const;
+  const output_fields = Object.keys(schema.properties);
 
   const items: { [key in (typeof input_fields)[number]]: any }[] = [
     {

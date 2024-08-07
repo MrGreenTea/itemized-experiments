@@ -1,13 +1,25 @@
+<script context="module" lang="ts">
+  export const schema = {
+    title: "MappedCard",
+    type: "object",
+    properties: {
+      title: { type: "string" },
+      description: { type: "string" },
+      subtitle: { type: "string" },
+      contact: { type: "string" },
+    },
+  };
+</script>
+
 <script lang="ts">
   import type { Item } from "$lib/types";
 
   export let item: Item;
-  export let mapping: {
-    title: keyof typeof item;
-    description: keyof typeof item;
-    subtitle: keyof typeof item;
-    contact: keyof typeof item;
+
+  type Mapping = {
+    [key in keyof (typeof schema)["properties"]]: keyof typeof item;
   };
+  export let mapping: Mapping;
 </script>
 
 <div class="flex justify-between gap-x-6 py-5">
