@@ -11,13 +11,13 @@
   };
 </script>
 
-<script lang="ts">
+<script lang="ts" generics="I extends Item">
   import type { Item } from "$lib/types";
 
-  export let item: Item;
+  export let item: I;
 
   type Mapping = {
-    [key in keyof (typeof schema)["properties"]]: keyof typeof item;
+    [key in keyof (typeof schema)["properties"]]: keyof I;
   };
   export let mapping: Mapping;
 </script>

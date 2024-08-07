@@ -35,7 +35,5 @@
   };
 </script>
 
-<div class="mx-auto max-w-4xl">
-  <MappingEditor bind:mapping {input_fields} {output_fields} />
-  <ListOfComponent component={MappedCard} {items} {mapping} />
-</div>
+<MappingEditor bind:mapping {input_fields} {output_fields} />
+<ListOfComponent component={MappedCard} {items} {mapping} />
